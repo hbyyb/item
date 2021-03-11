@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mymap.item.mapper.MapNonmotorMapper">
+  <resultMap id="BaseResultMap" type="mymap.item.entity.MapNonmotor">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="nonmotor_id" jdbcType="BIGINT" property="nonmotorId" />
+    <result column="nonmotor_name" jdbcType="VARCHAR" property="nonmotorName" />
+    <result column="nonmotor_address" jdbcType="VARCHAR" property="nonmotorAddress" />
+    <result column="nonmotor_area" jdbcType="INTEGER" property="nonmotorArea" />
+    <result column="nonmotor_labor_company" jdbcType="VARCHAR" property="nonmotorLaborCompany" />
+    <result column="nonmotor_lng" jdbcType="DECIMAL" property="nonmotorLng" />
+    <result column="nonmotor_lat" jdbcType="DECIMAL" property="nonmotorLat" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    nonmotor_id, nonmotor_name, nonmotor_address, nonmotor_area, nonmotor_labor_company, 
+    nonmotor_lng, nonmotor_lat
+  </sql>
+  <select id="selectByExample" parameterType="mymap.item.entity.MapNonmotorExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from map_nonmotor
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="mymap.item.entity.MapNonmotorExample">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from map_nonmotor
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="mymap.item.entity.MapNonmotorExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from map_nonmotor
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update map_nonmotor
+    <set>
+      <if test="record.nonmotorId != null">
+        nonmotor_id = #{record.nonmotorId,jdbcType=BIGINT},
+      </if>
+      <if test="record.nonmotorName != null">
+        nonmotor_name = #{record.nonmotorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nonmotorAddress != null">
+        nonmotor_address = #{record.nonmotorAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nonmotorArea != null">
+        nonmotor_area = #{record.nonmotorArea,jdbcType=INTEGER},
+      </if>
+      <if test="record.nonmotorLaborCompany != null">
+        nonmotor_labor_company = #{record.nonmotorLaborCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nonmotorLng != null">
+        nonmotor_lng = #{record.nonmotorLng,jdbcType=DECIMAL},
+      </if>
+      <if test="record.nonmotorLat != null">
+        nonmotor_lat = #{record.nonmotorLat,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update map_nonmotor
+    set nonmotor_id = #{record.nonmotorId,jdbcType=BIGINT},
+      nonmotor_name = #{record.nonmotorName,jdbcType=VARCHAR},
+      nonmotor_address = #{record.nonmotorAddress,jdbcType=VARCHAR},
+      nonmotor_area = #{record.nonmotorArea,jdbcType=INTEGER},
+      nonmotor_labor_company = #{record.nonmotorLaborCompany,jdbcType=VARCHAR},
+      nonmotor_lng = #{record.nonmotorLng,jdbcType=DECIMAL},
+      nonmotor_lat = #{record.nonmotorLat,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

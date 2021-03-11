@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+
+        <!-- 数据源配置 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/hbyy_map?serverTimezone=Asia/Shanghai"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <!-- 实体生成路径 -->
+        <javaModelGenerator targetPackage="mymap.item.entity" targetProject="src/main/java"/>
+
+        <!-- xml配置文件生成路径 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <!-- Mapper文件生成位置 -->
+        <javaClientGenerator targetPackage="mymap.item.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+
+        <!-- 对要进行自动生成的表进行配置 -->
+        <table tableName="map_nonmotor" domainObjectName="MapNonmotor">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="map_onroad" domainObjectName="MapOnroad">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="map_publicpak" domainObjectName="MapPublicpak">
+        <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="map_tag" domainObjectName="MapTag">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
